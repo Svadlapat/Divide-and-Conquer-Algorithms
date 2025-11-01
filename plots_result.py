@@ -4,17 +4,13 @@ import matplotlib.pyplot as plt
 
 # Load results file generated from experiment.py
 df = pd.read_csv('results.csv')
-
 # Ensure proper sorting by 'n' (input size)
 df = df.sort_values(by='n')
-
 # Plot average runtime for each data type
 for dtype in df['data_type'].unique():
     fig, ax = plt.subplots(figsize=(8, 5))
-    
     # Filter data for this input type (random, sorted, etc.)
     subset = df[df['data_type'] == dtype]
-    
     # Plot each algorithm separately
     for alg in subset['algorithm'].unique():
         grouped = subset[subset['algorithm'] == alg].groupby('n')['time_sec'].mean()
@@ -34,9 +30,7 @@ for dtype in df['data_type'].unique():
 # (Optional) Plot peak memory usage comparison
 for dtype in df['data_type'].unique():
     fig, ax = plt.subplots(figsize=(8, 5))
-    
     subset = df[df['data_type'] == dtype]
-    
     for alg in subset['algorithm'].unique():
         grouped = subset[subset['algorithm'] == alg].groupby('n')['peak_mem_kb'].mean()
         ax.plot(grouped.index, grouped.values, marker='s', label=alg)

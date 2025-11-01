@@ -75,4 +75,4 @@ if __name__ == '__main__':
         writer.writerow(['n', 'data_type', 'algorithm', 'time_sec', 'peak_mem_kb'])
         writer.writerows(rows)
 
-    print("\n✅ Experiment completed successfully! Results saved to 'results.csv'")
+    print("\n Experiment completed successfully! Results saved to 'results.csv'")
